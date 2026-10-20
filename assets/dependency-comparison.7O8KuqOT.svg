@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 24px; font-weight: bold; fill: #1f2937; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; fill: #6b7280; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #374151; }
+      .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 8; }
+      .npm-box { fill: #fee2e2; stroke: #ef4444; stroke-width: 2; }
+      .pnpm-box { fill: #dbeafe; stroke: #3b82f6; stroke-width: 2; }
+      .arrow { stroke: #9ca3af; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .check { fill: #10b981; }
+      .cross { fill: #ef4444; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <!-- 标题 -->
+  <text x="400" y="40" text-anchor="middle" class="title">依赖关系对比：npm vs pnpm</text>
+  <text x="400" y="65" text-anchor="middle" class="subtitle">同一个项目，两种包管理器的 node_modules 结构差异</text>
+
+  <!-- npm 结构 -->
+  <rect x="50" y="100" width="320" height="350" class="npm-box" rx="8"/>
+  <text x="210" y="125" text-anchor="middle" class="label" font-weight="bold">npm 扁平结构</text>
+  
+  <rect x="70" y="150" width="280" height="60" fill="#ffffff" stroke="#ef4444" stroke-width="1" rx="4"/>
+  <text x="210" y="175" text-anchor="middle" class="label">node_modules/</text>
+  <text x="210" y="195" text-anchor="middle" class="label">lodash@4.17.21 (重复存储)</text>
+  
+  <rect x="70" y="220" width="280" height="60" fill="#ffffff" stroke="#ef4444" stroke-width="1" rx="4"/>
+  <text x="210" y="245" text-anchor="middle" class="label">react@18.2.0</text>
+  <text x="210" y="265" text-anchor="middle" class="label">react-dom@18.2.0</text>
+  
+  <rect x="70" y="290" width="280" height="60" fill="#ffffff" stroke="#ef4444" stroke-width="1" rx="4"/>
+  <text x="210" y="315" text-anchor="middle" class="label">some-lib/</text>
+  <text x="210" y="335" text-anchor="middle" class="label">└── node_modules/lodash@3.10.1 (版本冲突)</text>
+  
+  <rect x="70" y="360" width="280" height="60" fill="#ffffff" stroke="#ef4444" stroke-width="1" rx="4"/>
+  <text x="210" y="385" text-anchor="middle" class="label">other-lib/</text>
+  <text x="210" y="405" text-anchor="middle" class="label">└── node_modules/lodash@3.10.1 (又一份)</text>
+
+  <!-- pnpm 结构 -->
+  <rect x="430" y="100" width="320" height="350" class="pnpm-box" rx="8"/>
+  <text x="590" y="125" text-anchor="middle" class="label" font-weight="bold">pnpm 严格结构</text>
+  
+  <rect x="450" y="150" width="280" height="80" fill="#ffffff" stroke="#3b82f6" stroke-width="1" rx="4"/>
+  <text x="590" y="175" text-anchor="middle" class="label">node_modules/.pnpm/</text>
+  <text x="590" y="195" text-anchor="middle" class="label">lodash@4.17.21 (唯一实例)</text>
+  <text x="590" y="215" text-anchor="middle" class="label">lodash@3.10.1 (版本隔离)</text>
+  
+  <rect x="450" y="240" width="280" height="60" fill="#ffffff" stroke="#3b82f6" stroke-width="1" rx="4"/>
+  <text x="590" y="265" text-anchor="middle" class="label">react@18.2.0</text>
+  <text x="590" y="285" text-anchor="middle" class="label">react-dom@18.2.0</text>
+  
+  <rect x="450" y="310" width="280" height="60" fill="#ffffff" stroke="#3b82f6" stroke-width="1" rx="4"/>
+  <text x="590" y="335" text-anchor="middle" class="label">some-lib/node_modules/lodash -> ../../lodash@4.17.21</text>
+  
+  <rect x="450" y="380" width="280" height="60" fill="#ffffff" stroke="#3b82f6" stroke-width="1" rx="4"/>
+  <text x="590" y="405" text-anchor="middle" class="label">other-lib/node_modules/lodash -> ../../lodash@3.10.1</text>
+
+  <!-- 对比指标 -->
+  <rect x="50" y="480" width="700" height="60" fill="#f9fafb" stroke="#d1d5db" stroke-width="1" rx="4"/>
+  <text x="200" y="505" text-anchor="middle" class="label" font-weight="bold">npm 问题</text>
+  <text x="200" y="525" text-anchor="middle" class="label">磁盘占用高 | 幻影依赖 | 版本冲突嵌套</text>
+  <text x="600" y="505" text-anchor="middle" class="label" font-weight="bold">pnpm 优势</text>
+  <text x="600" y="525" text-anchor="middle" class="label">节省 80% 空间 | 严格隔离 | 版本共存</text>
+</svg>

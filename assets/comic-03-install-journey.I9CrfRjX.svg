@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 660">
+  <style>
+    text { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    .ttl { font-size: 22px; font-weight: bold; fill: #2D3748; }
+    .cap { font-size: 12px; fill: #2D3748; }
+    .bub { font-size: 12.5px; fill: #2D3748; }
+    .panel { fill: #FFFFFF; stroke: #2D3748; stroke-width: 3; }
+    .capbox { fill: #BEE3F8; stroke: #2D3748; stroke-width: 1.5; }
+    .bubble { fill: #FFFFFF; stroke: #2D3748; stroke-width: 2; }
+    .num { fill: #2D3748; }
+    .numt { fill: #FFFFFF; font-size: 12px; font-weight: bold; }
+    .mono { font-family: "SF Mono", Menlo, monospace; }
+  </style>
+
+  <rect width="840" height="660" fill="#EBF4FA"/>
+  <text x="420" y="42" text-anchor="middle" class="ttl">第 3 话 · 依赖安装之旅 —— 一个包的漂流</text>
+
+  <!-- Panel 1 -->
+  <g>
+    <rect x="20" y="70" width="392" height="252" rx="14" class="panel"/>
+    <circle cx="48" cy="94" r="13" class="num"/><text x="48" y="99" text-anchor="middle" class="numt">1</text>
+    <rect x="70" y="80" width="230" height="26" rx="4" class="capbox"/>
+    <text x="185" y="97" text-anchor="middle" class="cap">小 P 敲下命令：pnpm install</text>
+
+    <g transform="translate(120,225)">
+      <circle r="30" fill="#FFD93D" stroke="#2D3748" stroke-width="3"/>
+      <circle cx="-10" cy="-5" r="3.5" fill="#2D3748"/>
+      <circle cx="10" cy="-5" r="3.5" fill="#2D3748"/>
+      <path d="M -10 9 Q 0 17 10 9" stroke="#2D3748" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- 终端 -->
+    <g transform="translate(275,200)">
+      <rect x="-105" y="-50" width="210" height="100" rx="8" fill="#1A202C" stroke="#2D3748" stroke-width="3"/>
+      <text x="-92" y="-20" class="mono" font-size="12" fill="#68D391">$ pnpm install</text>
+      <text x="-92" y="4" class="mono" font-size="11" fill="#E2E8F0">resolving packages…</text>
+      <text x="-92" y="26" class="mono" font-size="11" fill="#F6E05E">fetching: lodash@4.17.21</text>
+    </g>
+    <rect x="50" y="140" width="200" height="34" rx="12" class="bubble"/>
+    <polygon points="90,174 103,174 95,188" fill="#fff" stroke="#2D3748" stroke-width="2"/>
+    <text x="150" y="161" text-anchor="middle" class="bub">装依赖啦，这次看看它去哪了</text>
+  </g>
+
+  <!-- Panel 2 -->
+  <g>
+    <rect x="428" y="70" width="392" height="252" rx="14" class="panel"/>
+    <circle cx="456" cy="94" r="13" class="num"/><text x="456" y="99" text-anchor="middle" class="numt">2</text>
+    <rect x="478" y="80" width="230" height="26" rx="4" class="capbox"/>
+    <text x="593" y="97" text-anchor="middle" class="cap">第一站：缓存站（~/.pnpm-cache）</text>
+
+    <!-- 包裹小人 -->
+    <g transform="translate(530,215)">
+      <rect x="-26" y="-26" width="52" height="52" rx="8" fill="#ED8936" stroke="#2D3748" stroke-width="3"/>
+      <path d="M -26 -8 L 26 -8 M 0 -26 L 0 26" stroke="#FFF" stroke-width="3"/>
+      <circle cx="-9" cy="-42" r="3" fill="#2D3748"/><circle cx="9" cy="-42" r="3" fill="#2D3748"/>
+      <circle cx="0" cy="-44" r="16" fill="#FFE0BD" stroke="#2D3748" stroke-width="2.5"/>
+      <circle cx="-6" cy="-46" r="2.5" fill="#2D3748"/><circle cx="6" cy="-46" r="2.5" fill="#2D3748"/>
+      <path d="M -5 -37 Q 0 -33 5 -37" stroke="#2D3748" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="0" y="12" text-anchor="middle" font-size="9" fill="#fff" font-weight="bold">.tgz</text>
+    </g>
+    <!-- 缓存站 -->
+    <g transform="translate(690,215)">
+      <rect x="-70" y="-55" width="140" height="110" rx="10" fill="#F6E05E" stroke="#2D3748" stroke-width="3"/>
+      <path d="M -70 -25 L 70 -25" stroke="#2D3748" stroke-width="2"/>
+      <text x="0" y="-38" text-anchor="middle" font-size="12" font-weight="bold" fill="#2D3748">缓存站</text>
+      <text x="0" y="2" text-anchor="middle" class="mono" font-size="10" fill="#2D3748">lodash-4.17.21</text>
+      <text x="0" y="22" text-anchor="middle" class="mono" font-size="10" fill="#2D3748">react-18.2.0</text>
+      <text x="0" y="42" text-anchor="middle" class="mono" font-size="10" fill="#2D3748">…（离线可复用）</text>
+    </g>
+    <path d="M 562 215 L 610 215" stroke="#2D3748" stroke-width="3" marker-end="url(#ah3)"/>
+    <defs><marker id="ah3" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto"><polygon points="0 0,10 4,0 8" fill="#2D3748"/></marker></defs>
+
+    <rect x="455" y="140" width="250" height="34" rx="12" class="bubble"/>
+    <polygon points="495,174 508,174 500,188" fill="#fff" stroke="#2D3748" stroke-width="2"/>
+    <text x="580" y="161" text-anchor="middle" class="bub">缓存命中？直接跳过下载！</text>
+  </g>
+
+  <!-- Panel 3 -->
+  <g>
+    <rect x="20" y="340" width="392" height="252" rx="14" class="panel"/>
+    <circle cx="48" cy="364" r="13" class="num"/><text x="48" y="369" text-anchor="middle" class="numt">3</text>
+    <rect x="70" y="350" width="230" height="26" rx="4" class="capbox"/>
+    <text x="185" y="367" text-anchor="middle" class="cap">第二站：全局 Store，按内容哈希入库</text>
+
+    <!-- Store 仓库 -->
+    <g transform="translate(210,470)">
+      <path d="M -110 -50 L 0 -95 L 110 -50" fill="#FC8181" stroke="#2D3748" stroke-width="3"/>
+      <rect x="-100" y="-50" width="200" height="105" rx="6" fill="#FED7D7" stroke="#2D3748" stroke-width="3"/>
+      <text x="0" y="-28" text-anchor="middle" font-size="12" font-weight="bold" fill="#2D3748">~/.pnpm-store</text>
+      <rect x="-85" y="-14" width="80" height="30" rx="4" fill="#fff" stroke="#2D3748" stroke-width="2"/>
+      <text x="-45" y="5" text-anchor="middle" class="mono" font-size="9" fill="#2D3748">hash:a1b2</text>
+      <rect x="5" y="-14" width="80" height="30" rx="4" fill="#fff" stroke="#2D3748" stroke-width="2"/>
+      <text x="45" y="5" text-anchor="middle" class="mono" font-size="9" fill="#2D3748">hash:c3d4</text>
+      <rect x="-85" y="22" width="170" height="24" rx="4" fill="#fff" stroke="#2D3748" stroke-width="2"/>
+      <text x="0" y="38" text-anchor="middle" font-size="10" fill="#2D3748">同一内容 = 同一格子，全机共享</text>
+    </g>
+    <rect x="55" y="540" width="310" height="30" rx="10" class="bubble"/>
+    <text x="210" y="560" text-anchor="middle" class="bub">哪怕 100 个项目用 lodash，硬盘里也只有一份！</text>
+  </g>
+
+  <!-- Panel 4 -->
+  <g>
+    <rect x="428" y="340" width="392" height="252" rx="14" class="panel"/>
+    <circle cx="456" cy="364" r="13" class="num"/><text x="456" y="369" text-anchor="middle" class="numt">4</text>
+    <rect x="478" y="350" width="230" height="26" rx="4" class="capbox"/>
+    <text x="593" y="367" text-anchor="middle" class="cap">终点：硬链接进项目，软链接到根目录</text>
+
+    <!-- 链接示意 -->
+    <g transform="translate(624,470)">
+      <rect x="-160" y="-46" width="130" height="44" rx="8" fill="#BEE3F8" stroke="#2D3748" stroke-width="3"/>
+      <text x="-95" y="-28" text-anchor="middle" font-size="11" font-weight="bold" fill="#2D3748">Store 文件</text>
+      <text x="-95" y="-12" text-anchor="middle" class="mono" font-size="9" fill="#2D3748">inode #9527</text>
+
+      <rect x="30" y="-46" width="130" height="44" rx="8" fill="#C6F6D5" stroke="#2D3748" stroke-width="3"/>
+      <text x="95" y="-28" text-anchor="middle" font-size="11" font-weight="bold" fill="#2D3748">项目 .pnpm/</text>
+      <text x="95" y="-12" text-anchor="middle" class="mono" font-size="9" fill="#2D3748">inode #9527</text>
+
+      <!-- 硬链接链条 -->
+      <path d="M -30 -24 L 30 -24" stroke="#3B82F6" stroke-width="4" stroke-dasharray="8,4"/>
+      <text x="0" y="-34" text-anchor="middle" font-size="10" fill="#3B82F6" font-weight="bold">硬链接</text>
+
+      <rect x="-40" y="24" width="130" height="40" rx="8" fill="#E9D8FD" stroke="#2D3748" stroke-width="3"/>
+      <text x="25" y="40" text-anchor="middle" font-size="11" font-weight="bold" fill="#2D3748">根 node_modules</text>
+      <text x="25" y="55" text-anchor="middle" class="mono" font-size="9" fill="#2D3748">lodash → .pnpm/…</text>
+      <path d="M 95 -2 L 40 24" stroke="#8B5CF6" stroke-width="3" stroke-dasharray="4,4"/>
+      <text x="85" y="16" text-anchor="middle" font-size="10" fill="#8B5CF6" font-weight="bold">软链接</text>
+    </g>
+
+    <!-- 开心小P -->
+    <g transform="translate(490,540)">
+      <circle r="24" fill="#FFD93D" stroke="#2D3748" stroke-width="3"/>
+      <circle cx="-8" cy="-4" r="3" fill="#2D3748"/><circle cx="8" cy="-4" r="3" fill="#2D3748"/>
+      <path d="M -9 7 Q 0 15 9 7" stroke="#2D3748" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+    <rect x="540" y="524" width="230" height="30" rx="10" class="bubble"/>
+    <text x="655" y="544" text-anchor="middle" class="bub">0 拷贝、秒级完成，还是严格隔离！</text>
+  </g>
+
+  <text x="420" y="640" text-anchor="middle" font-size="12" fill="#718096">漂流路线：registry → 缓存站 → 全局 Store（哈希）→ 硬链接 → 项目 .pnpm → 软链接</text>
+</svg>
