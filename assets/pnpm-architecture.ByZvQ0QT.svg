@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 24px; font-weight: bold; fill: #1f2937; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; fill: #6b7280; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #374151; }
+      .box { fill: #ffffff; stroke: #d1d5db; stroke-width: 2; rx: 8; }
+      .store-box { fill: #dbeafe; stroke: #3b82f6; stroke-width: 2; }
+      .cache-box { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; }
+      .node-box { fill: #ecfdf5; stroke: #10b981; stroke-width: 2; }
+      .link { stroke: #9ca3af; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .hard-link { stroke: #3b82f6; stroke-width: 2; stroke-dasharray: 5,3; fill: none; marker-end: url(#arrowhead-blue); }
+      .soft-link { stroke: #10b981; stroke-width: 2; stroke-dasharray: 3,3; fill: none; marker-end: url(#arrowhead-green); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af"/>
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- 标题 -->
+  <text x="400" y="40" text-anchor="middle" class="title">pnpm 工作原理图解</text>
+  <text x="400" y="65" text-anchor="middle" class="subtitle">内容寻址存储 + 硬链接 + 软链接的三层架构</text>
+
+  <!-- 全局 Store -->
+  <rect x="50" y="100" width="200" height="120" class="store-box" rx="8"/>
+  <text x="150" y="125" text-anchor="middle" class="label" font-weight="bold">全局 Store</text>
+  <text x="150" y="145" text-anchor="middle" class="label">~/.pnpm-store/v3/files/</text>
+  <text x="150" y="165" text-anchor="middle" class="label">按内容哈希存储</text>
+  <text x="150" y="185" text-anchor="middle" class="label">所有项目共享</text>
+  <rect x="70" y="200" width="160" height="30" fill="#ffffff" stroke="#3b82f6" stroke-width="1" rx="4"/>
+  <text x="150" y="220" text-anchor="middle" class="label">lodash@4.17.21 (hash: a1b2)</text>
+
+  <!-- 缓存 -->
+  <rect x="300" y="100" width="180" height="120" class="cache-box" rx="8"/>
+  <text x="390" y="125" text-anchor="middle" class="label" font-weight="bold">缓存目录</text>
+  <text x="390" y="145" text-anchor="middle" class="label">~/.pnpm-cache/</text>
+  <text x="390" y="165" text-anchor="middle" class="label">存储 tarball 和元数据</text>
+  <text x="390" y="185" text-anchor="middle" class="label">加速重复安装</text>
+  <rect x="320" y="200" width="140" height="30" fill="#ffffff" stroke="#f59e0b" stroke-width="1" rx="4"/>
+  <text x="390" y="220" text-anchor="middle" class="label">lodash-4.17.21.tgz</text>
+
+  <!-- 项目 node_modules -->
+  <rect x="550" y="100" width="200" height="220" class="node-box" rx="8"/>
+  <text x="650" y="125" text-anchor="middle" class="label" font-weight="bold">项目 node_modules</text>
+  <text x="650" y="145" text-anchor="middle" class="label">.pnpm/ (实际存储)</text>
+  <rect x="570" y="160" width="160" height="40" fill="#ffffff" stroke="#10b981" stroke-width="1" rx="4"/>
+  <text x="650" y="180" text-anchor="middle" class="label">lodash@4.17.21</text>
+  <rect x="570" y="210" width="160" height="40" fill="#ffffff" stroke="#10b981" stroke-width="1" rx="4"/>
+  <text x="650" y="230" text-anchor="middle" class="label">react@18.2.0</text>
+  <rect x="570" y="260" width="160" height="40" fill="#ffffff" stroke="#10b981" stroke-width="1" rx="4"/>
+  <text x="650" y="280" text-anchor="middle" class="label">.bin/ (CLI 命令)</text>
+
+  <!-- 硬链接（Store -> .pnpm） -->
+  <path d="M 250 215 L 550 180" class="hard-link"/>
+  <text x="400" y="200" text-anchor="middle" class="label" fill="#3b82f6">硬链接 (Hard Link)</text>
+  <text x="400" y="215" text-anchor="middle" class="label" fill="#3b82f6">0 拷贝，共享 inode</text>
+
+  <!-- 下载（Registry -> 缓存） -->
+  <path d="M 390 100 L 390 60" class="link"/>
+  <text x="430" y="55" class="label" fill="#6b7280">npm registry</text>
+
+  <!-- 软链接（.pnpm -> node_modules 根） -->
+  <rect x="550" y="360" width="200" height="80" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" rx="8"/>
+  <text x="650" y="385" text-anchor="middle" class="label" font-weight="bold">项目根 node_modules</text>
+  <text x="650" y="405" text-anchor="middle" class="label">lodash -> .pnpm/lodash@4.17.21/...</text>
+  <text x="650" y="425" text-anchor="middle" class="label">react -> .pnpm/react@18.2.0/...</text>
+  <path d="M 650 320 L 650 360" class="soft-link"/>
+  <text x="680" y="345" class="label" fill="#10b981">软链接</text>
+
+  <!-- 流程说明 -->
+  <rect x="50" y="360" width="450" height="100" fill="#f9fafb" stroke="#d1d5db" stroke-width="1" rx="8"/>
+  <text x="275" y="385" text-anchor="middle" class="label" font-weight="bold">安装流程</text>
+  <text x="275" y="405" text-anchor="middle" class="label">1. 下载 tarball 到缓存</text>
+  <text x="275" y="425" text-anchor="middle" class="label">2. 解压到全局 Store（按内容哈希）</text>
+  <text x="275" y="445" text-anchor="middle" class="label">3. 硬链接到项目 .pnpm 目录</text>
+  <text x="275" y="465" text-anchor="middle" class="label">4. 软链接到根 node_modules（如启用 hoist）</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" role="img" aria-labelledby="title desc">
+  <title id="title">monorepo 依赖图治理基线</title>
+  <desc id="desc">apps 只依赖 packages，packages 之间无环，exercises 不参与治理。</desc>
+  <rect width="900" height="560" fill="#f8fafc"/>
+  <text x="32" y="44" font-family="system-ui, -apple-system, PingFang SC, sans-serif" font-size="24" font-weight="700" fill="#0f172a">monorepo 依赖图治理基线</text>
+  <text x="32" y="70" font-family="system-ui, -apple-system, PingFang SC, sans-serif" font-size="14" fill="#64748b">实线为 dependencies；devDependencies 不画；exercises/* 独立，不参与治理</text>
+
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#059669"/>
+    </marker>
+  </defs>
+
+  <!-- 依赖边 -->
+  <g stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M230,172 L150,246" stroke="#2563eb" stroke-opacity="0.8" marker-end="url(#arrow-blue)"/>
+    <path d="M230,172 L430,246" stroke="#2563eb" stroke-opacity="0.8" marker-end="url(#arrow-blue)"/>
+    <path d="M240,172 L440,406" stroke="#2563eb" stroke-opacity="0.55" marker-end="url(#arrow-blue)"/>
+    <path d="M670,172 L460,246" stroke="#2563eb" stroke-opacity="0.8" marker-end="url(#arrow-blue)"/>
+    <path d="M660,172 L470,406" stroke="#2563eb" stroke-opacity="0.8" marker-end="url(#arrow-blue)"/>
+    <path d="M240,286 L350,286" stroke="#059669" stroke-opacity="0.9" marker-end="url(#arrow-green)"/>
+    <path d="M160,322 L440,406" stroke="#059669" stroke-opacity="0.7" marker-end="url(#arrow-green)"/>
+    <path d="M440,322 L450,406" stroke="#059669" stroke-opacity="0.9" marker-end="url(#arrow-green)"/>
+  </g>
+
+  <!-- apps -->
+  <g font-family="system-ui, -apple-system, PingFang SC, sans-serif">
+    <rect x="140" y="100" width="180" height="72" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="230" y="132" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">@tutorial/web</text>
+    <text x="230" y="154" text-anchor="middle" font-size="12" fill="#1d4ed8">apps/*</text>
+
+    <rect x="580" y="100" width="180" height="72" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <text x="670" y="132" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">@tutorial/api</text>
+    <text x="670" y="154" text-anchor="middle" font-size="12" fill="#1d4ed8">apps/*</text>
+
+    <!-- packages -->
+    <rect x="60" y="250" width="180" height="72" rx="12" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+    <text x="150" y="282" text-anchor="middle" font-size="17" font-weight="700" fill="#064e3b">@tutorial/ui</text>
+    <text x="150" y="304" text-anchor="middle" font-size="12" fill="#047857">packages/*</text>
+
+    <rect x="350" y="250" width="180" height="72" rx="12" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+    <text x="440" y="282" text-anchor="middle" font-size="17" font-weight="700" fill="#064e3b">@tutorial/utils</text>
+    <text x="440" y="304" text-anchor="middle" font-size="12" fill="#047857">packages/*</text>
+
+    <rect x="360" y="410" width="180" height="72" rx="12" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
+    <text x="450" y="442" text-anchor="middle" font-size="17" font-weight="700" fill="#064e3b">@tutorial/types</text>
+    <text x="450" y="464" text-anchor="middle" font-size="12" fill="#047857">packages/*</text>
+  </g>
+
+  <!-- 图例 -->
+  <g font-family="system-ui, -apple-system, PingFang SC, sans-serif" font-size="12" fill="#475569">
+    <line x1="60" y1="518" x2="96" y2="518" stroke="#2563eb" stroke-width="2"/>
+    <text x="104" y="522">apps → packages</text>
+    <line x1="240" y1="518" x2="276" y2="518" stroke="#059669" stroke-width="2"/>
+    <text x="284" y="522">packages → packages</text>
+    <text x="700" y="522" font-weight="600" fill="#0f172a">5 个包 · 8 条 workspace 边 · 0 环</text>
+  </g>
+</svg>
